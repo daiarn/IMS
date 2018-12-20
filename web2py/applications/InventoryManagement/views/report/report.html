@@ -9,7 +9,9 @@
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="{{=URL('static','css/bootstrap.min.css')}}">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{=URL('static','css/font-awesome.min.css')}}">
+  <link rel="stylesheet" href="{{=URL('static','css/fontawesome.css')}}">
+  <!-- Data range picker -->
+  <link rel="stylesheet" href="{{=URL('static','css/daterangepicker.css')}}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="{{=URL('static','css/ionicons.min.css')}}">
   <!-- Theme style -->
@@ -150,47 +152,77 @@
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
+          <!-- general form elements -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Inventoriaus ataskaitos sudarymo forma</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form">
+              <div class="box-body">
+                <!-- Date and time range -->
+                <div class="form-group">
+                  <label>Pasirinkite laikotarpį:</label>
+                  <div class="row">
+                    <div class="col-xs-3">
+                    <button type="button" class="btn btn-default btn-block" id="daterange-btn">
+                      <span>Laikotarpis</span>
+                    </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Patvirtinti</button>
+              </div>
+            </form>
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+      <div class="row">
+        <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Responsive Hover Table</h3>
+              <h3 class="box-title">Invetoriaus ataskaita</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding">
               <table class="table table-hover">
                 <tr>
                   <th>ID</th>
-                  <th>User</th>
-                  <th>Date</th>
-                  <th>Status</th>
-                  <th>Reason</th>
+                  <th>Pavadinimas</th>
+                  <th>Vertė</th>
+                  <th>Būsena</th>
+                  <th>Kategorija</th>
+                  <th>Kiek kartų naudotas</th>
                 </tr>
                 <tr>
-                  <td>183</td>
-                  <td>John Doe</td>
-                  <td>11-7-2014</td>
-                  <td><span class="label label-success">Approved</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                  <td>1</td>
+                  <td>Keltuvas</td>
+                  <td>4500EUR</td>
+                  <td>Laisvas</td>
+                  <td>Transportas</td>
+                  <td>12</td>
                 </tr>
                 <tr>
-                  <td>219</td>
-                  <td>Alexander Pierce</td>
-                  <td>11-7-2014</td>
-                  <td><span class="label label-warning">Pending</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                  <td>2</td>
+                  <td>Krautuvas</td>
+                  <td>3960EUR</td>
+                  <td>Laisvas</td>
+                  <td>Transportas</td>
+                  <td>7</td>
                 </tr>
                 <tr>
-                  <td>657</td>
-                  <td>Bob Doe</td>
-                  <td>11-7-2014</td>
-                  <td><span class="label label-primary">Approved</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>175</td>
-                  <td>Mike Doe</td>
-                  <td>11-7-2014</td>
-                  <td><span class="label label-danger">Denied</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                  <td>3</td>
+                  <td>Kompiuteris</td>
+                  <td>1100EUR</td>
+                  <td>Naudojamas</td>
+                  <td>biuro rreikemnys</td>
+                  <td>49</td>
                 </tr>
               </table>
             </div>
@@ -225,9 +257,33 @@
 <script src="{{=URL('static','js/fastclick.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{=URL('static','js/adminlte.min.js')}}"></script>
+<!-- moment App -->
+<script src="{{=URL('static','js/moment.min.js')}}"></script>
+<!-- moment App -->
+<script src="{{=URL('static','js/daterangepicker.js')}}"></script>
+<!-- moment App -->
+<script src="{{=URL('static','js/fontawesome.js')}}"></script>
 <script>
-  $(document).ready(function () {
-    $('.sidebar-menu').tree()
+  $(function () {
+    //Date range as a button
+    $('#daterange-btn').daterangepicker(
+      {
+        ranges   : {
+          'Today'       : [moment(), moment()],
+          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        },
+        startDate: moment().subtract(29, 'days'),
+        endDate  : moment()
+      },
+      function (start, end) {
+        $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+      }
+    )
+
   })
 </script>
 </body>
