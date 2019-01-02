@@ -5,9 +5,11 @@
 # -------------------------------------------------------------------------
 
 # ---- example index page ----
+@auth.requires_login()
 def index():
     response.flash = T("Hello World")
-    return dict(message=T('Welcome to web2py!'))
+    user_email = auth.user.email
+    return dict(message=T('Welcome to web2py!'), user_email=user_email)
 
 # ---- API (example) -----
 @auth.requires_login()
