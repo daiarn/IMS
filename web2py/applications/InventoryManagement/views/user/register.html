@@ -28,7 +28,7 @@
 <body class="hold-transition register-page">
 <div class="register-box">
   <div class="register-logo">
-    <a href="../../index2.html"><b>Invenotry management system</b></a>
+    <a href="#"><b>Invenotry management system</b></a>
   </div>
 
   <div class="register-box-body">
@@ -36,30 +36,8 @@
           <h2>Registration</h2>
       </div>
       {{=form}}
-    <!--<form action="../../index.html" method="post">
-
-      <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Vardas pavardė">
-      </div>
-      <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Elektroninis paštas">
-      </div>
-      <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Slaptažodis">
-      </div>
-      <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Pakartoti slaptažodį">
-      </div>
-      <div class="row">
-
-        <div class="col-xs-12">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Registruotis</button>
-        </div>
-
-      </div>
-    </form>-->
     <br/>
-    <a href="login.html" class="text-center">I already have account</a>
+    <a href="{{=URL('user', 'login')}}" class="text-center">I already have account</a>
   </div>
   <!-- /.form-box -->
 </div>
