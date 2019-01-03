@@ -28,31 +28,16 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>Invenotry management system</b></a>
+    <a href="#"><b>Invenotry management system</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
     <div class="login-box-msg">
-      <h2>Prisijunkite</h2>
+      <h2>Login</h2>
     </div>
       {{=form}}
-    <!--<form action="../../index2.html" method="post">
-      <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Elektronins paštas">
-      </div>
-      <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Slaptažodis">
-      </div>
-      <div class="row">
-
-        <div class="col-xs-12">
-          <button type="submit" class="btn btn-primary btn-block btn-flat ">Prisijungti</button>
-        </div>
-
-      </div>
-    </form>-->
     <br>
-    <a href="register.html" class="text-center">Regsiter</a>
+    <a href="{{=URL('user', 'register')}}" class="text-center">Regsiter</a>
 
   </div>
   <!-- /.login-box-body -->
