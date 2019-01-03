@@ -1,22 +1,22 @@
 def inventory():
-    user_email = auth.user.email
+    user = auth.user
     response.flash = T("Hello World")
-    return dict(message=T('Welcome to web2py!'), user_email=user_email)
+    return dict(message=T('Welcome to web2py!'), user=user)
 
 
 def inventoryInUse():
-    user_email = auth.user.email
+    user = auth.user
     response.flash = T("Hello World")
-    return dict(message=T('Welcome to web2py!'), user_email=user_email)
+    return dict(message=T('Welcome to web2py!'), user=user)
 
 
 def addItem():
-    user_email = auth.user.email
+    user = auth.user
     response.flash = T("Hello World")
-    return dict(message=T('Welcome to web2py!'), user_email=user_email)
+    return dict(message=T('Welcome to web2py!'), user=user)
 
 
 def removeItem():
-    user_email = auth.user.email
+    user = auth.user
     response.flash = T("Hello World")
-    return dict(message=T('Welcome to web2py!'), user_email=user_email)
+    return dict(message=T('Welcome to web2py!'), user=user)

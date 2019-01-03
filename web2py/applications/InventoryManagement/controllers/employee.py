@@ -1,12 +1,12 @@
 def employee():
-    user_email = auth.user.email
+    user = auth.user
     response.flash = T("Hello World")
-    return dict(message=T('Welcome to web2py!'), user_email=user_email)
+    return dict(message=T('Welcome to web2py!'), user=user)
 def addEmployee():
-    user_email = auth.user.email
+    user = auth.user
     response.flash = T("Hello World")
-    return dict(message=T('Welcome to web2py!'), user_email=user_email)
+    return dict(message=T('Welcome to web2py!'), user=user)
 def removeEmployee():
-    user_email = auth.user.email
+    user = auth.user
     response.flash = T("Hello World")
-    return dict(message=T('Welcome to web2py!'), user_email=user_email)
+    return dict(message=T('Welcome to web2py!'), user=user)
