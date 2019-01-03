@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<ul class="sidebar-menu" data-widget="tree">
+    <li class="header">Meniu</li>
+    <li>
+      <a href="{{=URL('default', 'index')}}">
+        <i class="fa fa-th"></i>
+        <span>Apžvalga</span>
+      </a>
+    </li>
+    <li>
+      <a href="{{=URL('inventory', 'inventory')}}">
+        <i class="fa fa-th"></i>
+        <span>Inventorius</span>
+      </a>
+    </li>
+    <li>
+      <a href="{{=URL('inventory', 'inventoryInUse')}}">
+        <i class="fa fa-th"></i>
+        <span>Naudojamas inventorius</span>
+      </a>
+    </li>
+    <li>
+      <a href="{{=URL('report', 'report')}}">
+        <i class="fa fa-th"></i>
+        <span>Ataskaitos</span>
+      </a>
+    </li>
+    <li>
+      <a href="{{=URL('employee','employee')}}">
+        <i class="fa fa-th"></i>
+        <span>Darbuotojai</span>
+      </a>
+    </li>
+    {{block menu_content}}
+    {{end}}
+</ul>
