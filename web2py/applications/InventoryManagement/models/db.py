@@ -87,7 +87,49 @@ response.form_label_separator = ''
 
 # host names must be a list of allowed host names (glob syntax allowed)
 auth = Auth(db, host_names=configuration.get('host.names'))
+db.define_table(
 
+    auth.settings.table_user_name,
+
+    Field('first_name', length=128, default=''),
+
+    Field('last_name', length=128, default=''),
+
+    Field('email', length=128, default='', unique=True),
+
+    Field('address', length=256, default=''),
+
+    Field('postcode', length=128, default=''),
+
+    Field('city', length=128, default=''),
+
+    Field('password', 'password', length=512, readable=False, label='Password'),
+
+    Field('registration_key', length=512, writable=False, readable=False, default=''),
+
+    Field('reset_password_key', length=512, writable=False, readable=False, default=''),
+
+    Field('registration_id', length=512, writable=False, readable=False, default=''),
+
+    format='%(first_name)s %(last_name)s')
+
+member = db[auth.settings.table_user_name]  # get the custom_auth_table
+
+member.first_name.requires = \
+ \
+    IS_NOT_EMPTY(error_message=auth.messages.is_empty)
+
+member.last_name.requires = \
+ \
+    IS_NOT_EMPTY(error_message=auth.messages.is_empty)
+
+member.password.requires = [IS_STRONG(min=5, special=0, upper=0), CRYPT()]
+
+member.email.requires = [
+
+    IS_EMAIL(error_message=auth.messages.invalid_email),
+
+    IS_NOT_IN_DB(db, 'auth_user.email')]
 # -------------------------------------------------------------------------
 # create all tables needed by auth, maybe add a list of extra fields
 # -------------------------------------------------------------------------
