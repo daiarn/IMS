@@ -99,8 +99,6 @@ db.define_table(
 
     Field('address', length=256, default=''),
 
-    Field('postcode', length=128, default=''),
-
     Field('city', length=128, default=''),
 
     Field('password', 'password', length=512, readable=False, label='Password'),
@@ -190,7 +188,45 @@ if configuration.get('scheduler.enabled'):
 # >>> rows = db(db.mytable.myfield == 'value').select(db.mytable.ALL)
 # >>> for row in rows: print row.id, row.myfield
 # -------------------------------------------------------------------------
+db.define_table(
 
+    'company',
+
+    Field('admin_id', db.auth_user),
+
+    Field('company_name', length=128, default=''),
+
+    Field('address', length=256, default=''),
+
+    Field('company_code', length=128, default='', unique=True),
+
+    Field('telephone', length=128, default=''),
+
+    Field('city', length=128, default=''),
+
+    format='%(company_name)s %(telephone)s')
+
+member = db['company']  # get the custom_auth_table
+
+member.company_name.requires = \
+ \
+    IS_NOT_EMPTY(error_message=auth.messages.is_empty)
+
+member.address.requires = \
+ \
+    IS_NOT_EMPTY(error_message=auth.messages.is_empty)
+
+member.company_code.requires = [
+    IS_NOT_EMPTY(error_message=auth.messages.is_empty),
+    IS_NOT_IN_DB(db, 'company.company_code')]
+
+member.telephone.requires = \
+ \
+    IS_NOT_EMPTY(error_message=auth.messages.is_empty)
+
+member.city.requires = \
+ \
+    IS_NOT_EMPTY(error_message=auth.messages.is_empty)
 # -------------------------------------------------------------------------
 # after defining tables, uncomment below to enable auditing
 # -------------------------------------------------------------------------

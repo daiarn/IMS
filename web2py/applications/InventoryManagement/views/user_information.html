@@ -1,0 +1,18 @@
+<!-- User image -->
+<li class="user-header">
+    <img src="{{=URL('static','images/user.jpg')}}" class="img-circle" alt="User Image">
+    <p>
+      {{=user.first_name + ' ' + user.last_name}}
+      <small>Address: {{=user.city + ', ' + user.address}}</small>
+    </p>
+</li>
+<!-- Menu Footer-->
+<li class="user-footer">
+    <div class="pull-left">
+      <a href="{{=URL('user', 'profile')}}" class="btn btn-default btn-flat">Profile</a>
+        <a href="{{=URL('user', 'company_registration')}}" class="btn btn-default btn-flat">Company</a>
+    </div>
+    <div class="pull-right">
+      <a href="{{=URL('user', 'login', args='logout')}}" class="btn btn-default btn-flat">Log out</a>
+    </div>
+</li>

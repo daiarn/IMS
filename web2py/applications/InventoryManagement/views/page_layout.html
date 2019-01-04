@@ -56,26 +56,10 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <img src="{{=URL('static','images/user.jpg')}}" class="user-image" alt="User Image">
-              <span class="hidden-xs">{{=user_email}}</span>
+              <span class="hidden-xs">{{=user.email}}</span>
             </a>
             <ul class="dropdown-menu">
-              <!-- User image -->
-              <li class="user-header">
-                <img src="{{=URL('static','images/user.jpg')}}" class="img-circle" alt="User Image">
-                <p>
-                  Dainius Arnastauskas - IVS sistemos vadovas
-                  <small>Narys nuo 2018 Rug.</small>
-                </p>
-              </li>
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profilis</a>
-                </div>
-                <div class="pull-right">
-                  <a href="{{=URL('user', 'login', args='logout')}}" class="btn btn-default btn-flat">Atsijungti</a>
-                </div>
-              </li>
+                {{include 'user_information.html'}}
             </ul>
           </li>
         </ul>
@@ -87,16 +71,7 @@
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
-      <!-- Sidebar user panel -->
-      <div class="user-panel">
-        <div class="pull-left image">
-          <img src="{{=URL('static','images/user.jpg')}}" class="img-circle" alt="User Image">
-        </div>
-        <div class="pull-left info">
-          <p>Dainius Arnastauskas</p>
-          <a href="#"><i class="fa fa-circle text-success"></i>Prisijungęs</a>
-        </div>
-      </div>
+        {{include 'side_information.html'}}
       <!-- sidebar menu: : style can be found in sidebar.less -->
         {{include 'side_menu.html'}}
     </section>
@@ -108,8 +83,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Invetoriaus valdymo sistema
-        <small>Dainiaus ir Giedrės kompanija</small>
+        Invenotry management system
+        <small>{{if company:}}{{=company.company_name}}{{else:}}{{='Register your company'}}{{pass}}</small>
       </h1>
     </section>
 

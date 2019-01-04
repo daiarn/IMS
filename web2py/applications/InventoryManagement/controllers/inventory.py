@@ -1,22 +1,28 @@
 def inventory():
-    user_email = auth.user.email
-    response.flash = T("Hello World")
-    return dict(message=T('Welcome to web2py!'), user_email=user_email)
+    user = auth.user
+    comp = get_user_company(user)
+    return dict(user=user, company=comp)
 
 
 def inventoryInUse():
-    user_email = auth.user.email
-    response.flash = T("Hello World")
-    return dict(message=T('Welcome to web2py!'), user_email=user_email)
+    user = auth.user
+    comp = get_user_company(user)
+    return dict(user=user, company=comp)
 
 
 def addItem():
-    user_email = auth.user.email
-    response.flash = T("Hello World")
-    return dict(message=T('Welcome to web2py!'), user_email=user_email)
+    user = auth.user
+    comp = get_user_company(user)
+    return dict(user=user, company=comp)
 
 
 def removeItem():
-    user_email = auth.user.email
-    response.flash = T("Hello World")
-    return dict(message=T('Welcome to web2py!'), user_email=user_email)
+    user = auth.user
+    comp = get_user_company(user)
+    return dict(user=user, company=comp)
+
+
+@auth.requires_login()
+def get_user_company(user):
+    company = db(user.id == db.company.admin_id).select().first()
+    return company

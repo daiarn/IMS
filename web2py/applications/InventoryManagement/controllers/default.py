@@ -8,10 +8,16 @@
 @auth.requires_login()
 def index():
     response.flash = T("Hello World")
-    user_email = auth.user.email
-    return dict(message=T('Welcome to web2py!'), user_email=user_email)
+    user = auth.user
+    comp = get_user_company(user)
+    return dict(message=T('Welcome to web2py!'), user=user, company=comp)
 
 # ---- API (example) -----
+@auth.requires_login()
+def get_user_company(user):
+    company = db(user.id == db.company.admin_id).select().first()
+    return company
+
 @auth.requires_login()
 def api_get_user_email():
     if not request.env.request_method == 'GET': raise HTTP(403)
