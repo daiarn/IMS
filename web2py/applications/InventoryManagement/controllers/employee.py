@@ -1,12 +1,22 @@
 def employee():
     user = auth.user
-    response.flash = T("Hello World")
-    return dict(message=T('Welcome to web2py!'), user=user)
+    comp = get_user_company(user)
+    return dict(user=user, company=comp)
+
+
 def addEmployee():
     user = auth.user
-    response.flash = T("Hello World")
-    return dict(message=T('Welcome to web2py!'), user=user)
+    comp = get_user_company(user)
+    return dict(user=user, company=comp)
+
+
 def removeEmployee():
     user = auth.user
-    response.flash = T("Hello World")
-    return dict(message=T('Welcome to web2py!'), user=user)
+    comp = get_user_company(user)
+    return dict(user=user, company=comp)
+
+
+@auth.requires_login()
+def get_user_company(user):
+    company = db(user.id == db.company.admin_id).select().first()
+    return company
