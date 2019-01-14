@@ -5,6 +5,5 @@ db.define_table(
     Field('surname', requires=IS_NOT_EMPTY()),
     Field('email', requires=IS_NOT_EMPTY()),
     Field('password', 'password', requires=IS_NOT_EMPTY()),
-    Field('role'),
-    Field('time_stamp', 'datetime')
+    Field('role', requires=IS_NOT_EMPTY()),
     )

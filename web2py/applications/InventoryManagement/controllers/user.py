@@ -2,7 +2,7 @@
 def login():
     # response.flash = T("Hello World")
     # return dict(message=T('Welcome to web2py!'))
-    auth.logout()
+    # auth.logout()
     return dict(form=auth.login())
 
 

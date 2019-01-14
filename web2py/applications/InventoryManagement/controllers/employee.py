@@ -5,9 +5,9 @@ def employee():
 
 
 def addEmployee():
-    user = auth.user
-    comp = get_user_company(user)
-    return dict(user=user, company=comp)
+     user = auth.user
+     comp = get_user_company(user)
+     return dict(user=user, company=comp)
 
 
 def removeEmployee():
