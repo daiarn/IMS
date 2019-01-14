@@ -22,10 +22,7 @@
             <!-- select start -->
             <div class="form-group">
               <label>Daigtas kurį norit pašalinti</label>
-              <select class="form-control">
-                <option>Keltuvas</option>
-                <option>Kompiuteris</option>
-              </select>
+              {{rows = db().select(db.item.ALL)}} <select> {{for row in rows:}}<option>{{=row.Pavadinimas}}</option>{{pass}} </select>
               </div>
             <!-- select end -->
           </div>

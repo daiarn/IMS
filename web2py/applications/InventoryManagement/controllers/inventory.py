@@ -1,7 +1,8 @@
 def inventory():
     user = auth.user
     comp = get_user_company(user)
-    return dict(user=user, company=comp)
+    form = SQLFORM.grid(db.item)
+    return dict(user=user, company=comp, form=form)
 
 
 def inventoryInUse():
@@ -11,9 +12,10 @@ def inventoryInUse():
 
 
 def addItem():
+    form=SQLFORM(db.item).process()
     user = auth.user
     comp = get_user_company(user)
-    return dict(user=user, company=comp)
+    return dict(form=form, user=user, company=comp)
 
 
 def removeItem():

@@ -227,6 +227,17 @@ member.telephone.requires = \
 member.city.requires = \
  \
     IS_NOT_EMPTY(error_message=auth.messages.is_empty)
+
+db.define_table('item',
+
+    Field('Pavadinimas', requires=IS_NOT_EMPTY()),
+
+    Field('Verte', requires=IS_NOT_EMPTY()),
+
+    Field('Kategorija', requires=IS_NOT_EMPTY()),
+
+    Field('Busena', requires=IS_IN_SET({'Laisvas','Užimtas'},zero=T('Pasirinkite vieną')))
+           )
 # -------------------------------------------------------------------------
 # after defining tables, uncomment below to enable auditing
 # -------------------------------------------------------------------------
