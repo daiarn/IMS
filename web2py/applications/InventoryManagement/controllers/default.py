@@ -15,7 +15,7 @@ def index():
 # ---- API (example) -----
 @auth.requires_login()
 def get_user_company(user):
-    company = db(user.id == db.company.admin_id).select().first()
+    company = db(user.company_id == db.company.id).select().first()
     return company
 
 @auth.requires_login()
