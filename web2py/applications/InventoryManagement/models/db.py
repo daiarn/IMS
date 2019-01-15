@@ -149,7 +149,7 @@ db.define_table(
 
     Field('registration_id', length=512, writable=False, readable=False, default=''),
 
-    Field('company_id', db.company),
+    Field('company_id', db.company, writable=False, readable=True, default=''),
 
     format='%(first_name)s %(last_name)s')
 
