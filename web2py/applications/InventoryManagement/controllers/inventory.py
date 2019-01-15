@@ -8,14 +8,14 @@ def inventory():
                'item.Category': 'Category',
                'item.Status': 'Status'}
     default_sort_order = [db.item.Name]
-    form = SQLFORM.grid(db.item, fields=fields, headers=headers, orderby=default_sort_order, maxtextlength=64, paginate=25)
+    form = SQLFORM.grid(db.item.company_id == comp.id, fields=fields, headers=headers, orderby=default_sort_order, maxtextlength=64, paginate=25)
     return dict(user=user, company=comp, form=form)
 
 
 def inventoryInUse():
     user = auth.user
     comp = get_user_company(user)
-    rows = db(db.item.Status == 'Taken').select()
+    rows = db((db.item.Status == 'Taken')&(db.item.company_id == comp.id)).select()
     return dict(user=user, company=comp, rows=rows)
 
 
