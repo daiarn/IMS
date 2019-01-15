@@ -13,6 +13,6 @@
         <a href="{{if company:}}{{=URL('user', 'company_profile')}}{{else:}}{{=URL('user', 'company_registration')}}{{pass}}" class="btn btn-default btn-flat">Company</a>
     </div>
     <div class="pull-right">
-      <a href="{{=URL('user', 'login', args='logout')}}" class="btn btn-default btn-flat">Log out</a>
+      <a href="{{=URL('user', 'log_out')}}" class="btn btn-default btn-flat">Log out</a>
     </div>
 </li>

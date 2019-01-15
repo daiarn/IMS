@@ -50,4 +50,5 @@ def get_user_company(user):
 
 @auth.requires_login()
 def log_out():
-    auth.logout()
+    auth.logout(next=URL('user', 'login'))
+    redirect(URL('user', 'login'))

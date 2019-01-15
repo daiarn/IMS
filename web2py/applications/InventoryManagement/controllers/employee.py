@@ -14,14 +14,15 @@ def employee():
 
 def addEmployee():
     form = SQLFORM(db.auth_user, formstyle='divs')
-    if form.process().accepted:
-        user = db(db.auth_user).select().last()
-        db.auth_membership.insert(
-            user_id=user.id,
-            group_id= 5
-            )
     user = auth.user
     comp = get_user_company(user)
+    if form.process().accepted:
+        new_user = db(db.auth_user).select().last()
+        db.auth_membership.insert(
+            user_id=new_user.id,
+            group_id= 5
+            )
+        db(db.auth_user.id == new_user.id).update(company_id=comp.id)
     return dict(form=form, user=user, company=comp)
 
 
