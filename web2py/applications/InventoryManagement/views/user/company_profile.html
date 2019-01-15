@@ -6,6 +6,7 @@
         <h2>{{=company.company_name}}</h2>
     </div>
 </div>
+        {{if membership.group_id == 5:}}
 <div class="box box-info">
     <div class="box-body">
       <div class="table-responsive">
@@ -32,4 +33,7 @@
       </div>
     </div>
 </div>
+        {{else:}}
+        {{=form}}
+        {{pass}}
 {{end}}

@@ -7,31 +7,6 @@
     <li><a href="{{=URL('inventory','add_category')}}"><i class="fa fa-circle-o"></i>  <span>Add new category</span></a></li>
     <!-- Add more addmin functionality here -->
 {{end}}
-<!-- Main content -->
 {{block content}}
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="box">
-        <div class="box-header">
-          <h3 class="box-title">Company inventory</h3>
-        </div>
-        <!-- /.box-header -->
-        <div class="box-body">
-            {{=form}}
-        </div>
-        <!-- /.box-body -->
-      </div>
-      <!-- /.box -->
-    </div>
-    <!-- /.col -->
-  </div>
-  <!-- /.row -->
-{{end}}
-
-{{block page_js}}
-<script>
-  $(document).ready(function () {
-    $('.sidebar-menu').tree()
-  })
-</script>
+    {{=form}}
 {{end}}

@@ -230,16 +230,23 @@ if configuration.get('scheduler.enabled'):
 # >>> rows = db(db.mytable.myfield == 'value').select(db.mytable.ALL)
 # >>> for row in rows: print row.id, row.myfield
 # -------------------------------------------------------------------------
+db.define_table('category',
+
+    Field('Name', requires=[IS_NOT_EMPTY(), IS_NOT_IN_DB(db, 'category.Name')]),
+
+    format='%(Name)s',
+            )
+
 
 db.define_table('item',
 
-    Field('Pavadinimas', requires=IS_NOT_EMPTY()),
+    Field('Name', requires=IS_NOT_EMPTY()),
 
-    Field('Verte', requires=IS_NOT_EMPTY()),
+    Field('Worth', requires=IS_NOT_EMPTY()),
 
-    Field('Kategorija', requires=IS_NOT_EMPTY()),
+    Field('Category', db.category),
 
-    Field('Busena', requires=IS_IN_SET({'Laisvas','Užimtas'},zero=T('Pasirinkite vieną')))
+    Field('Status', requires=IS_IN_SET({'Available','Taken'},zero=T('Select one')))
            )
 # -------------------------------------------------------------------------
 # after defining tables, uncomment below to enable auditing
