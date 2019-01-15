@@ -3,7 +3,7 @@
 # This is a sample controller
 # this file is released under public domain and you can use without limitations
 # -------------------------------------------------------------------------
-
+import datetime
 # ---- example index page ----
 @auth.requires_login()
 def index():
