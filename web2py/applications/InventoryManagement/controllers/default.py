@@ -10,7 +10,11 @@ def index():
     response.flash = T("Hello World")
     user = auth.user
     comp = get_user_company(user)
-    return dict(message=T('Welcome to web2py!'), user=user, company=comp)
+    count_employees=db(db.auth_membership.group_id==5).count()
+    count_items=db(db.item.id>0).count()
+    today=datetime.datetime(request.now.year,request.now.month,request.now.day)
+    #count_active=db(db.auth_event.time_stamp==today).count()
+    return dict(message=T('Welcome to web2py!'), user=user, company=comp, count_employees=count_employees, count_items=count_items)
 
 # ---- API (example) -----
 @auth.requires_login()
