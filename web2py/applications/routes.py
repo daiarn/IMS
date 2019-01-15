@@ -34,6 +34,9 @@ routers = {
         languages=[lang for lang in possible_languages if lang != 'default']
     )
 }
+routes_onerror = [
+    ('myapp/*', '/myapp/default/handle_error')
+]
 
 # ----------------------------------------------------------------------------------------------------------------------
 # NOTE! To change language in your application using these rules add this line in one of your models files:
