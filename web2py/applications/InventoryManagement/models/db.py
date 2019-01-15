@@ -246,7 +246,9 @@ db.define_table('item',
 
     Field('Category', db.category),
 
-    Field('Status', requires=IS_IN_SET({'Available','Taken'},zero=T('Select one')))
+    Field('Status', requires=IS_IN_SET({'Available','Taken'},zero=T('Select one'))),
+
+    Field('company_id', db.company, writable=False, readable=False, default='')
            )
 # -------------------------------------------------------------------------
 # after defining tables, uncomment below to enable auditing

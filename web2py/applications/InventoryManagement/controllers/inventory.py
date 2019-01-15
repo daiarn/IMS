@@ -20,9 +20,12 @@ def inventoryInUse():
 
 
 def addItem():
-    form=SQLFORM(db.item).process()
+    form=SQLFORM(db.item)
     user = auth.user
     comp = get_user_company(user)
+    if form.process().accepted:
+        new_item = db(db.item).select().last()
+        db(db.item.id == new_item.id).update(company_id=comp.id)
     return dict(form=form, user=user, company=comp)
 
 
