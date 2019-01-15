@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 {{extend 'page_layout.html'}}
 {{block menu_content}}
+    {{if membership.group_id == 4:}}
     <li class="header">Administrator functionality</li>
     <li><a href="{{=URL('employee','addEmployee')}}"><i class="fa fa-circle-o"></i>  <span>Register new employee</span></a></li>
     <!-- Add more addmin functionality here -->
+    {{pass}}
 {{end}}
 {{block content}}
     <div class="row">
