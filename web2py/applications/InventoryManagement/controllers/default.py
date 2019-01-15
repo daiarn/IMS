@@ -3,19 +3,25 @@
 # This is a sample controller
 # this file is released under public domain and you can use without limitations
 # -------------------------------------------------------------------------
-
+import datetime
 # ---- example index page ----
 @auth.requires_login()
 def index():
     response.flash = T("Hello World")
     user = auth.user
     comp = get_user_company(user)
-    return dict(message=T('Welcome to web2py!'), user=user, company=comp)
+    count_employees=db(db.auth_membership.group_id==5).count()
+    count_items=db(db.item.id>0).count()
+    today=datetime.datetime(request.now.year,request.now.month,request.now.day)
+    count_active=db(db.auth_event.time_stamp==today).count()
+    rows = db(db.item.Status == 'Taken').select(limitby=(0, 5))
+    rows_items=db(db.item).select(limitby=(0, 10))
+    return dict(message=T('Welcome to web2py!'), user=user, company=comp, count_employees=count_employees, count_items=count_items, count_active=count_active, rows=rows, rows_items=rows_items)
 
 # ---- API (example) -----
 @auth.requires_login()
 def get_user_company(user):
-    company = db(user.id == db.company.admin_id).select().first()
+    company = db(user.company_id == db.company.id).select().first()
     return company
 
 @auth.requires_login()
@@ -36,6 +42,7 @@ def grid():
 def wiki():
     auth.wikimenu() # add the wiki to the menu
     return auth.wiki() 
+
 
 # ---- Action for login/register/etc (required for auth) -----
 def user():

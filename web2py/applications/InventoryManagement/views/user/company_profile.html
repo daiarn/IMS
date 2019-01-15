@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{{extend 'page_layout.html'}}
+{{block content}}
+<div class="row">
+    <div class="mx-auto text-center" >
+        <h2>{{=company.company_name}}</h2>
+    </div>
+</div>
+        {{if membership.group_id == 5:}}
+<div class="box box-info">
+    <div class="box-body">
+      <div class="table-responsive">
+        <table class="table no-margin">
+          <thead>
+          <tr>
+            <th>Company ID</th>
+            <th>Address</th>
+            <th>Company code</th>
+            <th>Telephone</th>
+            <th>City</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>{{=company.id}}</td>
+            <td>{{=company.address}}</td>
+            <td>{{=company.company_code}}</td>
+            <td>{{=company.telephone}}</td>
+            <td>{{=company.city}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>
+        {{else:}}
+        {{=form}}
+        {{pass}}
+{{end}}

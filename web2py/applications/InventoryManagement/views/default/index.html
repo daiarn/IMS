@@ -6,11 +6,11 @@
       <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
-            <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
+            <span class="info-box-icon bg-aqua"><i class="fa fa-lightbulb-o"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Turima daigtų</span>
-              <span class="info-box-number">90<small>vnt.</small></span>
+              <span class="info-box-text">All items</span>
+              <span class="info-box-number">{{=count_items}}<small>vnt.</small></span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -19,10 +19,10 @@
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
-            <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
+            <span class="info-box-icon bg-red"><i class="fa fa-spinner"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Naudojama daigtų</span>
+              <span class="info-box-text">Items in use</span>
               <span class="info-box-number">4</span>
             </div>
             <!-- /.info-box-content -->
@@ -36,11 +36,11 @@
 
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
-            <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
+            <span class="info-box-icon bg-green"><i class="fa fa-user-o"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Prisijungusių vartotojų</span>
-              <span class="info-box-number">1</span>
+              <span class="info-box-text">Active users</span>
+              <span class="info-box-number">{{=count_active}}</span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -49,11 +49,11 @@
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
-            <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
+            <span class="info-box-icon bg-yellow"><i class="fa fa-briefcase"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Viso darbuotojų</span>
-              <span class="info-box-number">2</span>
+              <span class="info-box-text">All employees</span>
+              <span class="info-box-number">{{=count_employees}}</span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -74,7 +74,7 @@
               <div class="row">
                 <div class="col-md-8">
                   <p class="text-center">
-                    <strong>Daigtų naudojamas kas mėnesį</strong>
+                    <strong>Daiktų naudojimas kas mėnesį</strong>
                   </p>
 
                   <div class="chart">
@@ -129,92 +129,33 @@
           <!-- TABLE: LATEST ORDERS -->
           <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">Naujausi daigtai</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
+              <h3 class="box-title">Newest items</h3>
+                <div class="box-body table-responsive no-padding">
+          <table class="table table-hover">
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Value (EUR)</th>
+              <th>Category</th>
+              <th>Status</th>
+            </tr>
+              {{for row in rows_items:}}
+            <tr>
+              <td>{{=row.id}}</td>
+              <td>{{=row.Name}}</td>
+              <td>{{=row.Worth}}</td>
+              <td>{{=row.Category}}</td>
+              <td>{{=row.Status}}</td>
+            </tr>
+              {{pass}}
+          </table>
+        </div>
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
-              <div class="table-responsive">
-                <table class="table no-margin">
-                  <thead>
-                  <tr>
-                    <th>Order ID</th>
-                    <th>Item</th>
-                    <th>Status</th>
-                    <th>Popularity</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                    <td>Call of Duty IV</td>
-                    <td><span class="label label-success">Shipped</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                    <td>Samsung Smart TV</td>
-                    <td><span class="label label-warning">Pending</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                    <td>iPhone 6 Plus</td>
-                    <td><span class="label label-danger">Delivered</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                    <td>Samsung Smart TV</td>
-                    <td><span class="label label-info">Processing</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                    <td>Samsung Smart TV</td>
-                    <td><span class="label label-warning">Pending</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                    <td>iPhone 6 Plus</td>
-                    <td><span class="label label-danger">Delivered</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                    <td>Call of Duty IV</td>
-                    <td><span class="label label-success">Shipped</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-              <!-- /.table-responsive -->
-            </div>
             <!-- /.box-body -->
             <div class="box-footer clearfix">
-              <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Pridėti naują daigtą</a>
-              <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">Matyti visą inventorių</a>
+              <a href="{{=URL('inventory','addItem')}}" class="btn btn-sm btn-info btn-flat pull-left">Add new item</a>
+              <a href="{{=URL('inventory','inventory')}}" class="btn btn-sm btn-default btn-flat pull-right">See all items</a>
             </div>
             <!-- /.box-footer -->
           </div>
@@ -226,8 +167,7 @@
           <!-- PRODUCT LIST -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Neseniai paimti daigtai</h3>
-
+              <h3 class="box-title">Recently used items</h3>
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
@@ -235,53 +175,29 @@
               </div>
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
-              <ul class="products-list product-list-in-box">
-                <li class="item">
-                  <div class="product-info">
-                    <a href="javascript:void(0)" class="product-title">Samsung TV
-                      <span class="label label-warning pull-right">$1800</span></a>
-                    <span class="product-description">
-                          Samsung 32" 1080p 60Hz LED Smart HDTV.
-                        </span>
-                  </div>
-                </li>
-                <!-- /.item -->
-                <li class="item">
-                  <div class="product-info">
-                    <a href="javascript:void(0)" class="product-title">Bicycle
-                      <span class="label label-info pull-right">$700</span></a>
-                    <span class="product-description">
-                          26" Mongoose Dolomite Men's 7-speed, Navy Blue.
-                        </span>
-                  </div>
-                </li>
-                <!-- /.item -->
-                <li class="item">
-                  <div class="product-info">
-                    <a href="javascript:void(0)" class="product-title">Xbox One <span
-                        class="label label-danger pull-right">$350</span></a>
-                    <span class="product-description">
-                          Xbox One Console Bundle with Halo Master Chief Collection.
-                        </span>
-                  </div>
-                </li>
-                <!-- /.item -->
-                <li class="item">
-                  <div class="product-info">
-                    <a href="javascript:void(0)" class="product-title">PlayStation 4
-                      <span class="label label-success pull-right">$399</span></a>
-                    <span class="product-description">
-                          PlayStation 4 500GB Console (PS4)
-                        </span>
-                  </div>
-                </li>
-                <!-- /.item -->
-              </ul>
-            </div>
+              <div class="box-body table-responsive no-padding">
+          <table class="table table-hover">
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Value (EUR)</th>
+              <th>Category</th>
+              <th>Status</th>
+            </tr>
+              {{for row in rows:}}
+            <tr>
+              <td>{{=row.id}}</td>
+              <td>{{=row.Name}}</td>
+              <td>{{=row.Worth}}</td>
+              <td>{{=row.Category}}</td>
+              <td>{{=row.Status}}</td>
+            </tr>
+              {{pass}}
+          </table>
+        </div>
             <!-- /.box-body -->
             <div class="box-footer text-center">
-              <a href="javascript:void(0)" class="uppercase">Pamatyti visus naudojamus daigtus</a>
+              <a href="{{=URL('inventory','inventoryInUse')}}" class="uppercase">See all currently used items</a>
             </div>
             <!-- /.box-footer -->
           </div>
