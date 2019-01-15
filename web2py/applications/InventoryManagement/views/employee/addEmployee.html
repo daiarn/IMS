@@ -2,9 +2,8 @@
 {{extend 'page_layout.html'}}
 <!-- sidebar menu: : style can be found in sidebar.less -->
 {{block menu_content}}
-    <li class="header">Administratoriaus funkcijos</li>
-    <li><a href="{{=URL('employee','addEmployee')}}"><i class="fa fa-circle-o"></i>  <span>Registruoti darbuotoją</span></a></li>
-    <li><a href="{{=URL('employee','removeEmployee')}}"><i class="fa fa-circle-o"></i>  <span>Išregistruoti darbuotoją</span></a></li>
+    <li class="header">Administrator functionality</li>
+    <li><a href="{{=URL('employee','addEmployee')}}"><i class="fa fa-circle-o"></i>  <span>Register new employee</span></a></li>
     <!-- Add more addmin functionality here -->
 {{end}}
 <!-- Main content -->
@@ -14,7 +13,7 @@
       <!-- general form elements -->
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title">Darbuotojo registravimo forma</h3>
+          <h3 class="box-title">Employee registration form</h3>
         </div>
           <br>
           {{=form.custom.begin}}
