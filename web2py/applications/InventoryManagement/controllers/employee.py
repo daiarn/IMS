@@ -8,7 +8,7 @@ def employee():
                'auth_user.address': 'Address',
                'auth_user.city': 'City'}
     default_sort_order = [db.auth_user.last_name]
-    form = SQLFORM.grid(db.auth_user, fields=fields, headers=headers, orderby=default_sort_order, maxtextlength=64, paginate=25, editable=False, create=False)
+    form = SQLFORM.grid(db.auth_user.company_id == comp.id, fields=fields, headers=headers, orderby=default_sort_order, maxtextlength=64, paginate=25, editable=False, create=False)
     return dict(user=user, company=comp, form=form)
 
 
