@@ -237,11 +237,6 @@ db.define_table('category',
     format='%(Name)s',
             )
 
-def _compute():
-    if request.vars.Status == 'Taken':
-        return 1
-    return 0 ##
-
 
 db.define_table('item',
 
@@ -253,7 +248,8 @@ db.define_table('item',
 
     Field('Status', requires=IS_IN_SET({'Available','Taken'},zero=T('Select one'))),
 
-    Field('Used_count', compute=_compute))
+    Field('company_id', db.company, writable=False, readable=False, default='')
+           )
 # -------------------------------------------------------------------------
 # after defining tables, uncomment below to enable auditing
 # -------------------------------------------------------------------------
