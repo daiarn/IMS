@@ -231,6 +231,16 @@ if configuration.get('scheduler.enabled'):
 # >>> for row in rows: print row.id, row.myfield
 # -------------------------------------------------------------------------
 
+db.define_table('item',
+
+    Field('Pavadinimas', requires=IS_NOT_EMPTY()),
+
+    Field('Verte', requires=IS_NOT_EMPTY()),
+
+    Field('Kategorija', requires=IS_NOT_EMPTY()),
+
+    Field('Busena', requires=IS_IN_SET({'Laisvas','Užimtas'},zero=T('Pasirinkite vieną')))
+           )
 # -------------------------------------------------------------------------
 # after defining tables, uncomment below to enable auditing
 # -------------------------------------------------------------------------
