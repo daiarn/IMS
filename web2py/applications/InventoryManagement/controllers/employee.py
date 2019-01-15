@@ -1,6 +1,7 @@
 def employee():
     user = auth.user
     comp = get_user_company(user)
+    membership = db(db.auth_membership.user_id == user.id).select().first()
     fields = (db.auth_user.first_name, db.auth_user.last_name, db.auth_user.email, db.auth_user.address, db.auth_user.city)
     headers = {'auth_user.first_name': 'First name',
                'auth_user.last_name': 'Last name',
@@ -8,8 +9,10 @@ def employee():
                'auth_user.address': 'Address',
                'auth_user.city': 'City'}
     default_sort_order = [db.auth_user.last_name]
-    form = SQLFORM.grid(db.auth_user.company_id == comp.id, fields=fields, headers=headers, orderby=default_sort_order, maxtextlength=64, paginate=25, editable=False, create=False)
-    return dict(user=user, company=comp, form=form)
+    form = SQLFORM.grid(db.auth_user.company_id == comp.id, fields=fields, headers=headers,
+                        orderby=default_sort_order, maxtextlength=64, paginate=25, editable=False, create=False,
+                        deletable=auth.has_membership('ROLE_ADMIN'))
+    return dict(user=user, company=comp, form=form, membership=membership)
 
 
 def addEmployee():

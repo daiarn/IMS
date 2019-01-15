@@ -232,7 +232,7 @@ if configuration.get('scheduler.enabled'):
 # -------------------------------------------------------------------------
 db.define_table('category',
 
-    Field('Name', requires=[IS_NOT_EMPTY(), IS_NOT_IN_DB(db, 'category.Name')]),
+    Field('Name', length=128, requires=[IS_NOT_EMPTY(), IS_NOT_IN_DB(db, 'category.Name')]),
 
     format='%(Name)s',
             )
@@ -240,15 +240,17 @@ db.define_table('category',
 
 db.define_table('item',
 
-    Field('Name', requires=IS_NOT_EMPTY()),
+    Field('Name', length=128, requires=IS_NOT_EMPTY()),
 
-    Field('Worth', requires=IS_NOT_EMPTY()),
+    Field('Worth', length=128, requires=IS_NOT_EMPTY()),
 
     Field('Category', db.category),
 
     Field('Status', requires=IS_IN_SET({'Available','Taken'},zero=T('Select one'))),
 
-    Field('company_id', db.company, writable=False, readable=False, default='')
+    Field('company_id', db.company, writable=False, readable=False, default=''),
+
+    Field('Taken', length=128, writable=False, readable=False, default=0)
            )
 # -------------------------------------------------------------------------
 # after defining tables, uncomment below to enable auditing

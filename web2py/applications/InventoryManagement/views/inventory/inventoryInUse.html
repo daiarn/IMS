@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 {{extend 'page_layout.html'}}
 {{block menu_content}}
+    {{if membership.group_id == 4:}}
     <li class="header">Administrator functionality</li>
     <li><a href="{{=URL('inventory','addItem')}}"><i class="fa fa-circle-o"></i>  <span>Add new item</span></a></li>
     <li><a href="{{=URL('inventory','removeItem')}}"><i class="fa fa-circle-o"></i>  <span>Remove item</span></a></li>
     <li><a href="{{=URL('inventory','add_category')}}"><i class="fa fa-circle-o"></i>  <span>Add new category</span></a></li>
     <!-- Add more addmin functionality here -->
+    {{pass}}
 {{end}}
 
 <!-- Main content -->
