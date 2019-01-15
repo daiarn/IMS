@@ -2,7 +2,7 @@
 def login():
     # response.flash = T("Hello World")
     # return dict(message=T('Welcome to web2py!'))
-    auth.logout()
+    # auth.logout()
     return dict(form=auth.login())
 
 
@@ -29,12 +29,24 @@ def company_registration():
 
 
 def profile():
+    form = auth.profile()
+    user = auth.user
+    comp = get_user_company(user)
+    return dict(user=user, company=comp, form=form)
+
+
+def company_profile():
     user = auth.user
     comp = get_user_company(user)
     return dict(user=user, company=comp)
+
 
 @auth.requires_login()
 def get_user_company(user):
     print(user.company_id)
     company = db(user.company_id == db.company.id).select().first()
     return company
+
+@auth.requires_login()
+def log_out():
+    auth.logout()
