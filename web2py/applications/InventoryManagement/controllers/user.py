@@ -38,12 +38,13 @@ def profile():
 def company_profile():
     user = auth.user
     comp = get_user_company(user)
-    return dict(user=user, company=comp)
+    membership = db(db.auth_membership.user_id == user.id).select().first()
+    form = SQLFORM(db.company, comp).process()
+    return dict(user=user, company=comp, form=form, membership=membership)
 
 
 @auth.requires_login()
 def get_user_company(user):
-    print(user.company_id)
     company = db(user.company_id == db.company.id).select().first()
     return company
 
