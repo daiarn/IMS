@@ -2,6 +2,7 @@
 {{extend 'page_layout.html'}}
     <!-- Main content -->
     {{block content}}
+    {{if company:}}
       <!-- Info boxes -->
       <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-12">
@@ -154,8 +155,10 @@
             <!-- /.box-header -->
             <!-- /.box-body -->
             <div class="box-footer clearfix">
-              <a href="{{=URL('inventory','addItem')}}" class="btn btn-sm btn-info btn-flat pull-left">Add new item</a>
-              <a href="{{=URL('inventory','inventory')}}" class="btn btn-sm btn-default btn-flat pull-right">See all items</a>
+                {{if membership.group_id == 4:}}
+                <a href="{{=URL('inventory','addItem')}}" class="btn btn-sm btn-info btn-flat pull-left">Add new item</a>
+                {{pass}}
+                <a href="{{=URL('inventory','inventory')}}" class="btn btn-sm btn-default btn-flat pull-right">See all items</a>
             </div>
             <!-- /.box-footer -->
           </div>
@@ -206,4 +209,7 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
+    {{else:}}
+    <h2>Register your company</h2>
+    {{pass}}
     {{end}}

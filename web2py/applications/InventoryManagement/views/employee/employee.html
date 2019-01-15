@@ -15,7 +15,11 @@
           <h3 class="box-title">Company employees</h3>
         </div>
         <div class="box-body">
+            {{if form:}}
             {{=form}}
+            {{else:}}
+            <p>Register company first</p>
+            {{pass}}
         </div>
         <!-- /.box-body -->
       </div>

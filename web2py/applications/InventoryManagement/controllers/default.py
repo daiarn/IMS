@@ -10,14 +10,24 @@ def index():
     response.flash = T("Hello World")
     user = auth.user
     comp = get_user_company(user)
-    count_employees=db(db.auth_user.company_id==comp.id).count()
-    count_items=db((db.item.id>0) & (db.item.company_id == comp.id)).count()
-    count_items_taken = db((db.item.Status == 'Taken') & (db.item.company_id == comp.id)).count()
+    membership = db(db.auth_membership.user_id == user.id).select().first()
+    if comp:
+        count_employees=db(db.auth_user.company_id==comp.id).count()
+        count_items=db((db.item.id>0) & (db.item.company_id == comp.id)).count()
+        count_items_taken = db((db.item.Status == 'Taken') & (db.item.company_id == comp.id)).count()
+        rows = db((db.item.Status == 'Taken') & (db.item.company_id == comp.id)).select(limitby=(0, 5))
+        rows_items=db(db.item.company_id == comp.id).select(limitby=(0, 10))
+    else:
+        count_employees = 1
+        count_items = 0
+        count_items_taken = 0
+        rows = ""
+        rows_items = ""
     today=datetime.datetime(request.now.year,request.now.month,request.now.day)
     count_active=db(db.auth_event.time_stamp==today).count()
-    rows = db((db.item.Status == 'Taken') & (db.item.company_id == comp.id)).select(limitby=(0, 5))
-    rows_items=db(db.item.company_id == comp.id).select(limitby=(0, 10))
-    return dict(message=T('Welcome to web2py!'), user=user, company=comp, count_employees=count_employees, count_items=count_items, count_active=count_active, rows=rows, rows_items=rows_items, count_items_taken=count_items_taken)
+    return dict(message=T('Welcome to web2py!'), user=user, company=comp, count_employees=count_employees,
+                count_items=count_items, count_active=count_active, rows=rows, rows_items=rows_items,
+                count_items_taken=count_items_taken, membership=membership)
 
 # ---- API (example) -----
 @auth.requires_login()
