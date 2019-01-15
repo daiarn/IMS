@@ -16,45 +16,65 @@
         <div class="box-header with-border">
           <h3 class="box-title">Darbuotojo registravimo forma</h3>
         </div>
-        <!-- /.box-header -->
-        <!-- form start -->
-        <form role="form">
-          <div class="box-body">
-            <div class="form-group">
-              <label for="exampleInputEmail1">Vardas</label>
-              <input type="text" class="form-control" id="pavadinimas" placeholder="Įrašykite pavadinimą">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Pavardė</label>
-              <input type="text" class="form-control" id="pavadinimas" placeholder="Įrašykite pavadinimą">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">El paštas</label>
-              <input type="email" class="form-control" id="pavadinimas" placeholder="Įrašykite pavadinimą">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Slaptažodis</label>
-              <input type="password" class="form-control" id="verte" placeholder="Vertė">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Pakartoti slaptaždį</label>
-              <input type="password" class="form-control" id="verte" placeholder="Vertė">
-            </div>
-            <!-- select start -->
-            <div class="form-group">
-              <label>Tipas</label>
-              <select class="form-control">
-                <option>Darbuotojas</option>
-                <option>Administratorius</option>
-              </select>
-            </div>
+          <br>
+          {{=form.custom.begin}}
+      <div class="form-group has-feedback">
+          <div class="col-sm-1">
+          <label for="first_name">First name:</label>
           </div>
-          <!-- /.box-body -->
-
-          <div class="box-footer">
-            <button type="submit" class="btn btn-primary">Patvirtinti</button>
+          <div class="col-sm-6">
+            {{=form.custom.widget.first_name}}
           </div>
-        </form>
+          <br>
+      </div>
+      <div class="form-group has-feedback">
+          <div class="col-sm-1">
+          <label for="last_name">Last name:</label>
+          </div>
+          <div class="col-sm-6">
+      {{=form.custom.widget.last_name}}
+          </div>
+          <br>
+      </div>
+      <div class="form-group has-feedback">
+          <div class="col-sm-1">
+          <label for="email">Email address:</label>
+          </div>
+          <div class="col-sm-6">
+      {{=form.custom.widget.email}}
+          </div>
+          <br>
+          <br>
+      </div>
+      <div class="form-group has-feedback">
+          <div class="col-sm-1">
+          <label for="address">Address:</label>
+          </div>
+          <div class="col-sm-6">
+      {{=form.custom.widget.address}}
+          </div>
+          <br>
+      </div>
+      <div class="form-group has-feedback">
+          <div class="col-sm-1">
+          <label for="city">City:</label>
+          </div>
+          <div class="col-sm-6">
+      {{=form.custom.widget.city}}
+          </div>
+          <br>
+      </div>
+      <div class="form-group has-feedback">
+          <div class="col-sm-1">
+          <label for="password">Password:</label>
+          </div>
+          <div class="col-sm-6">
+      {{=form.custom.widget.password}}
+          </div>
+          <br>
+      </div></br>
+        {{=form.custom.submit}}
+      {{=form.custom.end}}
       </div>
       <!-- /.box -->
     </div>
