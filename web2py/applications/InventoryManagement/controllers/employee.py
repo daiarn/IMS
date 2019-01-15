@@ -8,20 +8,21 @@ def employee():
                'auth_user.address': 'Address',
                'auth_user.city': 'City'}
     default_sort_order = [db.auth_user.last_name]
-    form = SQLFORM.grid(db.auth_user, fields=fields, headers=headers, orderby=default_sort_order, maxtextlength=64, paginate=25, editable=False, create=False)
+    form = SQLFORM.grid(db.auth_user.company_id == comp.id, fields=fields, headers=headers, orderby=default_sort_order, maxtextlength=64, paginate=25, editable=False, create=False)
     return dict(user=user, company=comp, form=form)
 
 
 def addEmployee():
     form = SQLFORM(db.auth_user, formstyle='divs')
-    if form.process().accepted:
-        user = db(db.auth_user).select().last()
-        db.auth_membership.insert(
-            user_id=user.id,
-            group_id= 5
-            )
     user = auth.user
     comp = get_user_company(user)
+    if form.process().accepted:
+        new_user = db(db.auth_user).select().last()
+        db.auth_membership.insert(
+            user_id=new_user.id,
+            group_id= 5
+            )
+        db(db.auth_user.id == new_user.id).update(company_id=comp.id)
     return dict(form=form, user=user, company=comp)
 
 
