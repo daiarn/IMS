@@ -2,8 +2,9 @@
 {{extend 'page_layout.html'}}
 {{block menu_content}}
     <li class="header">Administratoriaus funkcijos</li>
-    <li><a href="{{=URL('inventory','addItem')}}"><i class="fa fa-circle-o"></i>  <span>Pridėti naują daigtą</span></a></li>
-    <li><a href="{{=URL('inventory','removeItem')}}"><i class="fa fa-circle-o"></i>  <span>Pašalinti daigtą</span></a></li>
+    <li><a href="{{=URL('inventory','addItem')}}"><i class="fa fa-circle-o"></i>  <span>Add new item</span></a></li>
+    <li><a href="{{=URL('inventory','removeItem')}}"><i class="fa fa-circle-o"></i>  <span>Remove item</span></a></li>
+    <li><a href="{{=URL('inventory','add_category')}}"><i class="fa fa-circle-o"></i>  <span>Add new category</span></a></li>
     <!-- Add more addmin functionality here -->
 {{end}}
 <!-- Main content -->
@@ -12,21 +13,13 @@
     <div class="col-xs-12">
       <div class="box">
         <div class="box-header">
-          <h3 class="box-title">Visas inventorius</h3>
-            {{=form}}
+          <h3 class="box-title">Company inventory</h3>
         </div>
         <!-- /.box-header -->
-        <!-- /.box-body -->
-         <div class="box-footer clearfix">
-          <ul class="pagination pagination-sm no-margin pull-right">
-            <li><a href="#">&laquo;</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">&raquo;</a></li>
-          </ul>
+        <div class="box-body">
+            {{=form}}
         </div>
-        <!-- /.box-footer -->
+        <!-- /.box-body -->
       </div>
       <!-- /.box -->
     </div>

@@ -2,8 +2,9 @@
 {{extend 'page_layout.html'}}
 {{block menu_content}}
     <li class="header">Administratoriaus funkcijos</li>
-    <li><a href="{{=URL('inventory','addItem')}}"><i class="fa fa-circle-o"></i>  <span>Pridėti naują daigtą</span></a></li>
-    <li><a href="{{=URL('inventory','removeItem')}}"><i class="fa fa-circle-o"></i>  <span>Pašalinti daigtą</span></a></li>
+    <li><a href="{{=URL('inventory','addItem')}}"><i class="fa fa-circle-o"></i>  <span>Add new item</span></a></li>
+    <li><a href="{{=URL('inventory','removeItem')}}"><i class="fa fa-circle-o"></i>  <span>Remove item</span></a></li>
+    <li><a href="{{=URL('inventory','add_category')}}"><i class="fa fa-circle-o"></i>  <span>Add new category</span></a></li>
     <!-- Add more addmin functionality here -->
 {{end}}
 <!-- Main content -->
@@ -13,7 +14,7 @@
       <!-- general form elements -->
       <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title">Daikto pašalinimo forma</h3>
+          <h3 class="box-title">Item removal form</h3>
         </div>
         <!-- /.box-header -->
         <!-- form start -->
@@ -21,15 +22,15 @@
           <div class="box-body">
             <!-- select start -->
             <div class="form-group">
-              <label>Daigtas kurį norit pašalinti</label>
-              {{rows = db().select(db.item.ALL)}} <select> {{for row in rows:}}<option>{{=row.Pavadinimas}}</option>{{pass}} </select>
+                <label>Select item you want to delete</label></br>
+              {{rows = db().select(db.item.ALL)}} <select> {{for row in rows:}}<option>{{=row.Name}}</option>{{pass}} </select>
               </div>
             <!-- select end -->
           </div>
           <!-- /.box-body -->
 
           <div class="box-footer">
-            <button type="submit" class="btn btn-primary">Patvirtinti</button>
+            <button type="submit" class="btn btn-primary">Confirm</button>
           </div>
         </form>
       </div>
